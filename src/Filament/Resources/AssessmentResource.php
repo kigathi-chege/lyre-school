@@ -17,8 +17,6 @@ class AssessmentResource extends Resource
 {
     protected static ?string $model = Assessment::class;
 
-    protected static ?string $modelLabel = 'Test';
-
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     protected static ?string $navigationGroup = 'School';
@@ -117,4 +115,3 @@ class AssessmentResource extends Resource
         return Auth::user()->can('update', new Assessment);
     }
 }
-
