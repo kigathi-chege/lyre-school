@@ -4,7 +4,7 @@ namespace Lyre\School\Filament\Resources\TaskResource\RelationManagers;
 
 use Lyre\School\Filament\Resources\TaskAnswerResource;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,7 +13,7 @@ class AnswersRelationManager extends RelationManager
 {
     protected static string $relationship = 'answers';
 
-    public function form(Form $form): Form
+    public function form(Schema $form): Schema
     {
         return TaskAnswerResource::form($form);
     }
@@ -27,15 +27,15 @@ class AnswersRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                \Filament\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

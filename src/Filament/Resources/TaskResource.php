@@ -6,7 +6,7 @@ use Lyre\School\Filament\Resources\TaskResource\Pages;
 use Lyre\School\Filament\Resources\TaskResource\RelationManagers;
 use Lyre\School\Models\Task;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -18,13 +18,17 @@ class TaskResource extends Resource
 {
     protected static ?string $model = Task::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-list-bullet';
 
-    protected static ?string $navigationGroup = 'School';
+    public static function getNavigationGroup(): ?string
+    {
+        return 'School';
+    }
+
 
     protected static ?int $navigationSort = 3;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
@@ -74,11 +78,11 @@ class TaskResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                \Filament\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ])
             ->defaultSort('created_at', 'desc');
