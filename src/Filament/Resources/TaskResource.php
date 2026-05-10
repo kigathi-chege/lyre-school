@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Auth;
 use Lyre\Facet\Filament\RelationManagers\FacetValuesRelationManager;
+use UnitEnum;
 
 class TaskResource extends Resource
 {
@@ -20,11 +21,10 @@ class TaskResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-list-bullet';
 
-    public static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): string | UnitEnum | null
     {
         return 'School';
     }
-
 
     protected static ?int $navigationSort = 3;
 
@@ -111,4 +111,3 @@ class TaskResource extends Resource
         return Auth::user()->can('update', new Task);
     }
 }
-

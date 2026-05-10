@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Auth;
 use Lyre\Facet\Filament\RelationManagers\FacetValuesRelationManager;
+use UnitEnum;
 
 class AssessmentResource extends Resource
 {
@@ -19,11 +20,10 @@ class AssessmentResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-academic-cap';
 
-    public static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): string | UnitEnum | null
     {
         return 'School';
     }
-
 
     protected static ?int $navigationSort = 2;
 
